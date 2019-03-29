@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { selectFlat } from '../actions';
 
 class Flat extends Component {
   handleClick = () => {
-    const { index } = this.props;
-    const { selectFlat } = this.props;
-    if (selectFlat) {
-      selectFlat(index);
-    }
+    this.props.selectFlat(this.props.flat);
   }
 
   render () {
     const url = this.props.flat.imageUrl;
+    let classes = "card";
+    if (this.props.flat === this.props.selectedFlat) {
+      classes += ' active';
+    }
     const cardStyle = {
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(${url})`
     };
     return (
       <div
-        className={`card${this.props.selected ? ' active' : ''}`}
+        className={classes}
         style={cardStyle}
         onClick={this.handleClick}
       >
@@ -27,10 +29,23 @@ class Flat extends Component {
         <div className="card-description">
           <h2>{this.props.flat.name}</h2>
         </div>
-        <a href="#" className="card-link"></a>
       </div>
     );
   }
 }
 
-export default Flat;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { selectFlat },
+    dispatch
+  );
+}
+
+function mapStateToProps(state) {
+  return {
+    selectedFlat: state.selectedFlat
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Flat);

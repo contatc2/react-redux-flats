@@ -1,5 +1,6 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import { connect } from 'react-redux';
 
 import GM_API_KEY from './config_key';
 
@@ -38,4 +39,11 @@ const MapReact = ({ selectedFlat }) => {
   );
 };
 
-export default MapReact;
+function mapStateToProps(state) {
+  return {
+    selectedFlat: state.selectedFlat
+  };
+}
+
+
+export default connect(mapStateToProps)(MapReact);

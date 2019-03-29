@@ -1,12 +1,26 @@
+// external modules
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
 
+// internal modules
 import App from './components/app';
-
 import '../assets/stylesheets/application.scss';
 
+import flatsReducer from './reducers/flats_reducer';
+import selectFlatReducer from './reducers/select_flat_reducer';
 
-const root = document.getElementById('root');
-if (root) {
-  ReactDOM.render(<App />, root);
-}
+// State and reducers
+const reducers = combineReducers({
+  flats: flatsReducer,
+  selectedFlat: selectFlatReducer
+});
+
+
+ReactDOM.render(
+  <Provider store={createStore(reducers)}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
