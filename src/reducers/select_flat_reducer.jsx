@@ -1,6 +1,6 @@
-export default function(action, state) {
+export default function(state, action) {
   if (state === undefined) {
-    return [];
+    return null;
   }
 
   if (action.type === 'SELECT_FLAT') {

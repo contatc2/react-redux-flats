@@ -1,4 +1,4 @@
-export default function(action, state) {
+export default function(state, action) {
   if (state === undefined) {
     return [];
   }

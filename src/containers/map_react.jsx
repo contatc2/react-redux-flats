@@ -6,9 +6,9 @@ import GM_API_KEY from './config_key';
 
 const MapReact = ({ selectedFlat }) => {
   let marker = null;
-  const center = {
-    lat: selectedFlat.lat,
-    lng: selectedFlat.lng
+  let center = {
+    lat: 48.8566,
+    lng: 2.3522
   };
 
   if (selectedFlat) {
@@ -24,6 +24,10 @@ const MapReact = ({ selectedFlat }) => {
         lng={selectedFlat.lng}
       />
     );
+    center = {
+      lat: selectedFlat.lat,
+      lng: selectedFlat.lng
+    };
   }
   return (
     // Important! Always set the container height explicitly
