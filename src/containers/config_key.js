@@ -1,3 +1,3 @@
-const GM_API_KEY = 'AIzaSyAtyfFfrVx0lQksg8StMnVHhCeVyzrB6p0';
+const GM_API_KEY = 'AIzaSyBGQAFXpmMcRujmzyWN31lvceb12hvFWOU';
 
 export default GM_API_KEY;
