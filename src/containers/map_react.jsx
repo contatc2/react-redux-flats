@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux';
 
-import GM_API_KEY from './config_key';
+import GM_API_KEY from './config_keys';
 
 const MapReact = ({ selectedFlat }) => {
   let marker = null;
